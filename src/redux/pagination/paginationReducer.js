@@ -1,6 +1,5 @@
 // Functions
-import { setPaginationConfigs } from "../../helper/functions";
-import { setNewPageConfigs } from "../../helper/functions";
+import { setPaginationConfigs, setNewPageConfigs } from "../../helper/functions";
 
 const initialState = {
   allProducts: [],
@@ -14,7 +13,7 @@ const initialState = {
 const paginationReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
-  const { currentPage, pagesCount } = state
+  const { currentPage, pagesCount } = state;
 
   switch (type) {
     case "PAGINATE_PRODUCTS":
@@ -23,22 +22,21 @@ const paginationReducer = (state = initialState, action) => {
       };
 
     case "NEXT_PAGE":
-      const nextPage = currentPage < pagesCount ? currentPage + 1 : currentPage
-      console.log(nextPage)
+      const nextPage = currentPage < pagesCount ? currentPage + 1 : currentPage;
       return {
-        ...setNewPageConfigs(state,  nextPage)
-      }
+        ...setNewPageConfigs(state, nextPage),
+      };
 
     case "PREV_PAGE":
-      const prevPage = currentPage > 1 ? currentPage - 1 : currentPage
+      const prevPage = currentPage > 1 ? currentPage - 1 : currentPage;
       return {
-        ...setNewPageConfigs(state, prevPage)
-      }
+        ...setNewPageConfigs(state, prevPage),
+      };
 
     case "CHANGE_PAGE":
       return {
-        ...setNewPageConfigs(state, payload)
-      }
+        ...setNewPageConfigs(state, payload),
+      };
 
     default:
       return state;

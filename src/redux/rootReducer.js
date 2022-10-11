@@ -6,8 +6,8 @@ import paginationReducer from "./pagination/paginationReducer";
 import cartReducer from "./cart/cartReducer";
 
 const rootReducer = combineReducers({
-    paginationState: paginationReducer,
-    cartState: cartReducer
-})
+  paginationState: paginationReducer,
+  cartState: cartReducer,
+});
 
-export default rootReducer
+export default rootReducer;

@@ -1,10 +1,10 @@
 import React from "react";
 
-// Empty cart img
-import emmptyCart from "../../asset/empty-cart-removebg-preview.png";
-
 // React-router-dom
 import { useNavigate } from "react-router-dom";
+
+// Empty cart img
+import emmptyCart from "../../asset/empty-cart-removebg-preview.png";
 
 const EmptyCart = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const EmptyCart = () => {
       </div>
       <img className="mx-auto" alt="test" src={emmptyCart} />
       <button
-        onClick={() => navigate("/shop")}
+        onClick={() => navigate("/store")}
         className="bg-primary text-white px-2 py-1 rounded-md transition hover:bg-primaryHover"
       >
         برگشت به فروشگاه

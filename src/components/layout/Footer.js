@@ -3,12 +3,15 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="mt-auto font-semibold text-lg text-center shadow-top py-4">
-      made with &nbsp;
+      made with 
+      &nbsp;
       <i className="bi bi-heart-fill text-primary"></i>
-      &nbsp; by
+      &nbsp;
+       by
       <span className="text-primary"> A</span>
       mir
-      <span className="text-primary"> S</span>h
+      <span className="text-primary"> S</span>
+      h
     </footer>
   );
 };

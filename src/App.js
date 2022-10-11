@@ -1,34 +1,34 @@
-import React from 'react';
+import React from "react";
 
 // Componetns
-import Layout from './components/layout/Layout';
-import Shop from "./components/shop/Shop"
-import Cart from "./components/cart/Cart"
-import About from "./components/about/About"
-import Login from './components/login/Login';
-import ProductDetail from './components/shop/ProductDetail';
-import NotFound from './components/not-found/NotFound';
+import Layout from "./components/layout/Layout";
+import Store from "./components/store/Store"
+import Cart from "./components/cart/Cart";
+import About from "./components/about/About";
+import Login from "./components/login/Login";
+import ProductDetail from "./components/store/ProductDetail";
+import NotFound from "./components/not-found/NotFound";
 
 // React-router-dom
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Redux
-import store from './redux/store';
-import { Provider } from 'react-redux';
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
 const App = () => {
   return (
-    <div className='bg-white dark:bg-black'>
+    <div className="bg-white dark:bg-black">
       <Provider store={store}>
         <Layout>
           <Routes>
-            <Route path='/shop' element={<Shop /> }/>
-            <Route path='/shop/:slug' element={<ProductDetail /> }/>
-            <Route path='/cart' element={<Cart /> }/>
-            <Route path='/about' element={<About /> }/>
-            <Route path='login' element={<Login /> } />
-            <Route path='/' element={<Navigate to="/shop" /> }/>
-            <Route path='/*' element={<NotFound /> }/>
+            <Route path="/store" element={<Store />} />
+            <Route path="/store/:slug" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/about" element={<About />} />
+            <Route path="login" element={<Login />} />
+            <Route path="/" element={<Navigate to="/store" />} />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </Layout>
       </Provider>

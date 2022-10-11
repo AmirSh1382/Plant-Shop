@@ -2,18 +2,21 @@ import React from "react";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
+import { increaseQuantity, decreaseQuantity, removeProduct } from "../../redux/cart/cartActions"
 
 // Functions
 import { productQuantityCount } from "../../helper/functions";
 
-const CartItem = ({ coverPhoto, name, quantity, price, slug, id }) => {
+const CartItem = (props) => {
+  const { coverPhoto, name, quantity, price, slug, id } = props
+
   const dispatch = useDispatch();
 
-  const cartProcuts = useSelector((state) => state.cartState.products);
+  const cartProcuts = useSelector(state => state.cartState.products);
 
   return (
     <div className="mb-3">
-      <div className="flex flex-col sm:flex-row gap-2 max-w-[280px] sm:max-w-full border
+      <div className="flex flex-col sm:flex-row gap-2 w-[90%] max-w-[320px] sm:w-full sm:max-w-full border
         border-primary rounded-md overflow-hidden sm:[&>*]:grow pb-3 sm:pb-0 mx-auto">
         <img src={coverPhoto.url} className="sm:max-w-[160px]" alt={slug} />
 
@@ -28,7 +31,7 @@ const CartItem = ({ coverPhoto, name, quantity, price, slug, id }) => {
 
         <div className="flex items-center justify-center gap-x-1">
           <button
-            onClick={() => dispatch({ type: "INCREASE", payload: id })}
+            onClick={() => dispatch(increaseQuantity(id))}
             className="bg-primary rounded text-white transition hover:bg-primaryHover w-7 h-8"
           >
             <i className="bi bi-plus flex items-center justify-center text-xl"></i>
@@ -36,14 +39,14 @@ const CartItem = ({ coverPhoto, name, quantity, price, slug, id }) => {
 
           {productQuantityCount(cartProcuts, id) > 1 ? (
             <button
-              onClick={() => dispatch({ type: "DECREASE", payload: id })}
+              onClick={() => dispatch(decreaseQuantity(id))}
               className="bg-primary rounded text-white transition hover:bg-primaryHover w-7 h-8"
             >
               <i className="bi bi-dash flex items-center justify-center text-xl"></i>
             </button>
           ) : (
             <button
-              onClick={() => dispatch({ type: "REMOVE", payload: id })}
+              onClick={() => dispatch(removeProduct(id))}
               className="bg-primary rounded text-white transition hover:bg-primaryHover w-7 h-8"
             >
               <i className="bi bi-trash flex items-center justify-center"></i>

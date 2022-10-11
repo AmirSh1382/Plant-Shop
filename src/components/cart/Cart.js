@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
 
-// Redux
-import { useSelector, useDispatch } from 'react-redux';
-
 // Components
 import EmptyCart from './EmptyCart';
 import CheckOut from './CheckOut';
 import CartItem from './CartItem';
 
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart, checkoutAction } from '../../redux/cart/cartActions';
+
 // React-router-dom
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const cartState = useSelector(state => state.cartState);
   const { products, checkout, itemsCounter, total } = cartState
@@ -23,7 +24,7 @@ const Cart = () => {
   const { allProducts } = paginationState
 
   useEffect(() => {
-    !allProducts.length && navigate("/shop")
+    !allProducts.length && navigate("/store")
   }, [allProducts, navigate])
   
   if (!products.length && !checkout) return <EmptyCart />
@@ -39,7 +40,7 @@ const Cart = () => {
           }
         </div>
 
-        <div className='border border-primary rounded order-0 md:col-span-4 md:order-1 h-fit p-3'>
+        <div className='border border-primary rounded md:col-span-4 md:order-1 h-fit p-3'>
           <div>
             <span className='text-primary font-semibold text-lg ml-2'>
               تعداد محصولات :
@@ -60,13 +61,13 @@ const Cart = () => {
 
           <div className='flex items-center justify-between'>
             <button 
-              onClick={() => dispatch({type: "CHECKOUT"})}
+              onClick={() => dispatch(checkoutAction())}
               className='bg-primary text-white rounded-md transition hover:bg-primaryHover py-1 px-2'
             >
               تکمیل خرید
             </button>
             <button 
-              onClick={() => dispatch({type: "CLEAR"})}
+              onClick={() => dispatch(clearCart())}
               className='text-primary rounded-md p-1'
             >
               پاک کردن سبد خرید

@@ -5,7 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
-  const [minHeight, setMinHeight] = useState(visualViewport.height + "px");
+  const [ minHeight, setMinHeight ] = useState(visualViewport.height + "px");
 
   window.addEventListener("resize", () => {
     setMinHeight(visualViewport.height + "px");
