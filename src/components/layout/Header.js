@@ -6,8 +6,14 @@ import styles from "../../styles/Header.module.css";
 // React-router-dom
 import { Link } from "react-router-dom";
 
+// Redux
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+
+  const cartState = useSelector(state => state.cartState)
+  const { itemsCounter } = cartState
 
   const navRef = useRef();
   const hamburgerRef = useRef();
@@ -25,7 +31,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className={`${styles.container} text-primary`}>
+    <header className={`${styles.container} text-primary`}>
       <div className={styles.wrapper}>
         {/* Navbar */}
         <nav
@@ -40,6 +46,9 @@ const Header = () => {
             </li>
 
             <li onClick={() => setIsMenuOpen(false)}>
+              <span className="bg-primary text-white">
+                {itemsCounter}
+              </span>
               <Link to="/cart"> 
                 سبد خرید
               </Link>
@@ -72,7 +81,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
