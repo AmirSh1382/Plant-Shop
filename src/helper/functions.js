@@ -135,7 +135,33 @@ const removeProduct = (state, mainProductId) => {
     return { ...state }
 }
 
+const clearCart = () => {
+    const state = {
+        products: [],
+        itemsCounter : 0,
+        total: 0,
+        checkout: false
+    }
+
+    setCartStateInToLocalStorage(state)
+
+    return { ...state }
+}
+
+const checkOut = () => {
+    const state = {
+        products: [],
+        itemsCounter : 0,
+        total: 0,
+        checkout: true
+    }
+
+    setCartStateInToLocalStorage(state)
+
+    return { ...state }
+}
+
 export { setPaginationConfigs, isInCart, productQuantityCount }
 export { increaseProductQuantity, decreaseProductQuantity }
-export { getCartStateFromLocalStorgae }
+export { getCartStateFromLocalStorgae, clearCart, checkOut }
 export { removeProduct, addProduct, setNewPageConfigs }

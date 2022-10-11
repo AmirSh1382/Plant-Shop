@@ -2,7 +2,7 @@
 import { increaseProductQuantity } from "../../helper/functions";
 import { decreaseProductQuantity } from "../../helper/functions";
 import { removeProduct } from "../../helper/functions";
-import { addProduct } from "../../helper/functions";
+import { addProduct, clearCart, checkOut } from "../../helper/functions";
 import { getCartStateFromLocalStorgae } from "../../helper/functions";
 
 const initialState = {
@@ -40,6 +40,16 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...removeProduct(state, payload),
       };
+
+    case "CLEAR":
+      return {
+        ...clearCart()
+      }
+
+    case "CHECKOUT":
+      return {
+        ...checkOut()
+      }
 
     default:
       return state;

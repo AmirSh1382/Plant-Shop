@@ -20,7 +20,8 @@ const GET_PRODUCT_INFO = gql`
     plant (where: { slug: $slug }) {
       description {
         html
-      }
+      },
+      name
     }
   }
 `

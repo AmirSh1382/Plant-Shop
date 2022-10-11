@@ -48,7 +48,9 @@ const Shop = () => {
       </div>
 
       <div className='mb-10'>
-        <Pagination />
+        {
+          paginatedProducts.length && <Pagination />
+        }
       </div>
     </div>
   );
