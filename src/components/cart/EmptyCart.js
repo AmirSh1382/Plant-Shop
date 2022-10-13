@@ -17,9 +17,9 @@ const EmptyCart = () => {
       <img className="mx-auto" alt="test" src={emmptyCart} />
       <button
         onClick={() => navigate("/store")}
-        className="bg-primary text-white px-2 py-1 rounded-md transition hover:bg-primaryHover"
+        className="bg-primary text-white rounded-md transition hover:bg-primaryHover px-2 py-1"
       >
-        برگشت به فروشگاه
+        بازگشت به فروشگاه
       </button>
     </div>
   );

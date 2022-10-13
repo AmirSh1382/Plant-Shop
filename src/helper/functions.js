@@ -172,6 +172,17 @@ const checkOut = () => {
   return { ...state };
 };
 
+const getLocalThemeInfo = () => {
+  const darkMode = JSON.parse(localStorage.getItem("theme"))
+
+  return darkMode ? true : false
+}
+
+const setNewThemeIntoLocalStorage = newTheme => {
+  localStorage.setItem("theme", JSON.stringify(newTheme))
+}
+
 export { setPaginationConfigs, setNewPageConfigs,getCartStateFromLocalStorgae };
 export { isInCart, productQuantityCount, addProduct, increaseProductQuantity };
 export { decreaseProductQuantity, removeProduct, clearCart, checkOut };
+export { getLocalThemeInfo, setNewThemeIntoLocalStorage }

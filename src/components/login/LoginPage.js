@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = () => {
+const LoginPage = () => {
     return (
         <div className='max-w-6xl w-full mt-20 px-5 mx-auto'>
            Login 
@@ -8,4 +8,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginPage;

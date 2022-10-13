@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="mt-auto font-semibold text-lg text-center shadow-top py-4">
+    <footer className="mt-auto font-semibold text-lg text-center shadow-light py-4 dark:shadow-dark">
       made with 
       &nbsp;
       <i className="bi bi-heart-fill text-primary"></i>

@@ -18,7 +18,8 @@ module.exports = {
         "primary": "rgba(64,145,119,0.15)"
       },
       boxShadow: {
-        "top": "0px 0px 10px 1px rgba(0, 0, 0, 0.15)"
+        "light": "0px 0px 10px 1px rgba(0, 0, 0, 0.15)",
+        "dark": "0px 0px 10px 1px rgba(256, 256, 256, 0.15)"
       }
     },
   },

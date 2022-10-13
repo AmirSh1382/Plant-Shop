@@ -5,7 +5,7 @@ import Layout from "./components/layout/Layout";
 import Store from "./components/store/Store"
 import Cart from "./components/cart/Cart";
 import About from "./components/about/About";
-import Login from "./components/login/Login";
+import LoginPage from "./components/login/LoginPage";
 import ProductDetail from "./components/store/ProductDetail";
 import NotFound from "./components/not-found/NotFound";
 
@@ -18,7 +18,7 @@ import { Provider } from "react-redux";
 
 const App = () => {
   return (
-    <div className="bg-white dark:bg-black">
+    <div className="bg-white dark:bg-black dark:text-white ">
       <Provider store={store}>
         <Layout>
           <Routes>
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/store/:slug" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
-            <Route path="login" element={<Login />} />
+            <Route path="login" element={<LoginPage />} />
             <Route path="/" element={<Navigate to="/store" />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
