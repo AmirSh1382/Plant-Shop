@@ -17,6 +17,9 @@ import { loginValidation } from "../../helper/validate";
 // Axios
 import axios from "axios";
 
+// React-toastify
+import { toast } from "react-toastify";
+
 const LoginForm = ({ loginData, setLoginData }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -51,7 +54,8 @@ const LoginForm = ({ loginData, setLoginData }) => {
         }
 
       } catch (error) {
-        dispatch(loginUserFailure(error.message))
+        dispatch(loginUserFailure())
+        toast.error(error.message)
       }
     }
   }
