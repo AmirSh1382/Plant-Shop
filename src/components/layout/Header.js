@@ -8,9 +8,16 @@ import { Link } from "react-router-dom";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
+import { userLogOut } from "../../redux/user/userActions";
+
+// Functions
+import { removeCookie } from "../../helper/functions";
 
 const Header = () => {
   const dispatch = useDispatch()
+
+  const userState = useSelector(state => state.userState)
+  const { isLogedIn, userName, password } = userState
   
   const cartState = useSelector(state => state.cartState)
   const { itemsCounter } = cartState
@@ -25,7 +32,7 @@ const Header = () => {
   const testRef = useRef()
   const testRef1 = useRef()
 
-  const changeTheme = () => {
+  const changeTheme = () => {    
     dispatch({type: "CHANGE_THEME", payload: !darkMode})
   }
 
@@ -40,6 +47,11 @@ const Header = () => {
       setIsDarkModeMenuOpen(false);
     }
   };
+
+  const logOut = () => {
+    removeCookie(userName, password)
+    dispatch(userLogOut())
+  }
 
   useEffect(() => {
     window.addEventListener("click", clickHandler);
@@ -62,11 +74,11 @@ const Header = () => {
 
           <label className="relative items-center cursor-pointer">
             <input onChange={changeTheme} checked={darkMode} type="checkbox" className="sr-only peer" />
-            <div className="w-11 h-6 bg-gray-200 rounded-full dark:bg-gray-700
+            <div className="w-11 h-6 bg-gray-300 rounded-full dark:bg-gray-700
                 peer-checked:after:translate-x-full peer-checked:after:border-white
                 after:content-[''] after:absolute after:top-[2px] after:left-[2px]
                 after:bg-white after:border-gray-300 after:border after:rounded-full
-                after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"
             ></div>
           </label>
         </div>
@@ -117,12 +129,32 @@ const Header = () => {
           <span className="bg-primary"></span>
         </div>
 
-        {/* Login */}
-        <div className={styles.login}>
-          <Link to="/login">
-            <span>ورود / ثبت نام</span>
-            <i className="bi bi-box-arrow-in-left"></i>
-          </Link>
+        <div>
+          {
+            isLogedIn ? (
+              <div className={styles.userInfo}>
+                <span>
+                  {userName}
+                  <i className="bi bi-person-fill mr-1"></i>
+                </span>
+                <div 
+                  onClick={logOut}
+                  className={`${styles.logOut} bg-white dark:bg-black shadow-light
+                    dark:shadow-dark border border-red-300 dark:border-red-900 text-red-500`}
+                >
+                  خروج
+                  <i className="bi bi-box-arrow-in-left text-red"></i>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.login}>
+                <Link to="/form">
+                  <span>ورود / ثبت نام</span>
+                  <i className="bi bi-box-arrow-in-left"></i>
+                </Link>
+              </div>
+            )
+          }
         </div>
       </div>
     </header>

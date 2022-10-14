@@ -7,21 +7,42 @@ import CartItem from './CartItem';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { clearCart, checkoutAction } from '../../redux/cart/cartActions';
+import {clearCartAction, checkoutAction } from '../../redux/cart/cartActions';
 
 // React-router-dom
 import { useNavigate } from 'react-router-dom';
+
+// React-toastify
+import { toast } from 'react-toastify';
 
 const Cart = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
+  const userState = useSelector(state => state.userState)
+  const { isLogedIn } = userState
+
   const cartState = useSelector(state => state.cartState);
   const { products, checkout, itemsCounter, total } = cartState
 
   const paginationState = useSelector(state => state.paginationState)
   const { allProducts } = paginationState
+
+  const clearCart = () => {
+    dispatch(clearCartAction())
+    toast.success("سبد خرید با موفقیت خالی شد.")
+  }
+
+  const checkOut = () => {
+    if (isLogedIn) {
+      dispatch(checkoutAction())
+      toast.success("خرید شما با موفقیت انجام شد.")
+    } else {
+      toast.warn("ابتدا وارد اکانت خود شوید !")
+      navigate("/form")
+    }
+  }
 
   useEffect(() => {
     !allProducts.length && navigate("/store")
@@ -61,13 +82,13 @@ const Cart = () => {
 
           <div className='flex items-center justify-between'>
             <button 
-              onClick={() => dispatch(checkoutAction())}
+              onClick={checkOut}
               className='bg-primary text-white rounded-md transition hover:bg-primaryHover py-1 px-2'
             >
               تکمیل خرید
             </button>
             <button 
-              onClick={() => dispatch(clearCart())}
+              onClick={clearCart}
               className='text-primary rounded-md p-1'
             >
               پاک کردن سبد خرید

@@ -5,7 +5,7 @@ import Layout from "./components/layout/Layout";
 import Store from "./components/store/Store"
 import Cart from "./components/cart/Cart";
 import About from "./components/about/About";
-import LoginPage from "./components/login/LoginPage";
+import Form from "./components/form/Form";
 import ProductDetail from "./components/store/ProductDetail";
 import NotFound from "./components/not-found/NotFound";
 
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/store/:slug" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
-            <Route path="login" element={<LoginPage />} />
+            <Route path="/form" element={<Form />} />
             <Route path="/" element={<Navigate to="/store" />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>

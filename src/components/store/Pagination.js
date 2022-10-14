@@ -28,7 +28,7 @@ const Pagination = () => {
       <button
         onClick={() => clickHandler(prevPage(), "PREV")}
         className={`${currentPage === 1 && "opacity-50 cursor-default"}
-            border border-primary rounded flex justify-center items-center w-5 h-7`}
+            border border-primary rounded flex justify-center items-center w-7 h-7`}
       >
         <i className="bi bi-chevron-compact-right flex"></i>
       </button>
@@ -39,7 +39,7 @@ const Pagination = () => {
             key={btn}
             onClick={() => clickHandler(changePage(btn), "NUMBER")}
             className={`${currentPage === btn && "bg-primary text-white"}
-                border border-primary rounded flex justify-center items-center rounded w-5 h-7`}
+                border border-primary rounded flex justify-center items-center rounded w-7 h-7`}
           >
             <span className="pt-1 block">{btn}</span>
           </button>
@@ -49,7 +49,7 @@ const Pagination = () => {
       <button
         onClick={() => clickHandler(nextPage(), "NEXT")}
         className={`${currentPage === pagesCount && "opacity-50 cursor-default"}
-            border border-primary flex justify-center items-center rounded w-5 h-7`}
+            border border-primary flex justify-center items-center rounded w-7 h-7`}
       >
         <i className="bi bi-chevron-compact-left flex"></i>
       </button>

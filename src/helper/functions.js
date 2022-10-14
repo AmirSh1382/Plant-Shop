@@ -1,3 +1,5 @@
+import { loginUserSuccess } from "../redux/user/userActions";
+
 // To set initial configs of pagination
 const setPaginationConfigs = (state, products) => {
   const { itemsPerPage, currentPage } = state;
@@ -182,7 +184,49 @@ const setNewThemeIntoLocalStorage = newTheme => {
   localStorage.setItem("theme", JSON.stringify(newTheme))
 }
 
+const isThisUserNameTaken = (allUsers, mainUserName) => {
+  return allUsers.find(user => {
+    return user[1].name === mainUserName
+  }) ? true : false
+}
+
+const userAuthentication = (allUsers, mainUser) => {
+  return allUsers.find(user => {
+    return (user[1].name === mainUser.name && user[1].password === mainUser.password) 
+  }) ? true : false
+}
+
+const setCookie = userData => {
+  const { name, password } = userData
+
+  let now = new Date();
+
+  now.setTime(now.getTime() + 3 * 24 * 60 * 60 * 1000);
+
+  document.cookie = `username=${name};path=/;expires=${now}`;
+  document.cookie = `password=${password};path=/;expires=${now}`;
+}
+
+const getUserDataFromCookie = () => {
+  const cookie = document.cookie.split("; ")
+
+  const userName = cookie[0].split("=")[1]
+  const password = cookie[1].split("=")[1]
+
+  return loginUserSuccess(userName, password)
+}
+
+const removeCookie = (userName, password) => {
+  let now = new Date();
+
+  now.setTime(now.getTime() - 3 * 24 * 60 * 60 * 100000);
+
+  document.cookie = `username=${userName};path=/;expires=${now}`;
+  document.cookie = `password=${password};path=/;expires=${now}`;
+}
+
 export { setPaginationConfigs, setNewPageConfigs,getCartStateFromLocalStorgae };
 export { isInCart, productQuantityCount, addProduct, increaseProductQuantity };
 export { decreaseProductQuantity, removeProduct, clearCart, checkOut };
 export { getLocalThemeInfo, setNewThemeIntoLocalStorage }
+export { userAuthentication, isThisUserNameTaken, setCookie, getUserDataFromCookie, removeCookie }

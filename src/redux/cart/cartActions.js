@@ -3,7 +3,6 @@ const getLocalCartInfo = () => {
 };
 
 const addProduct = (productInfo) => {
-  console.log(productInfo);
   return { type: "ADD_PRODUCT", payload: productInfo };
 };
 
@@ -19,7 +18,7 @@ const decreaseQuantity = productId => {
   return { type: "DECREASE_QUANTITY", payload: productId };
 };
 
-const clearCart = () => {
+const clearCartAction = () => {
   return { type: "CLEAR_CART" };
 };
 
@@ -28,4 +27,4 @@ const checkoutAction = () => {
 };
 
 export { getLocalCartInfo, addProduct, removeProduct, increaseQuantity };
-export { decreaseQuantity, clearCart, checkoutAction };
+export { decreaseQuantity, clearCartAction, checkoutAction };
