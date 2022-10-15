@@ -33,18 +33,16 @@ const Pagination = () => {
         <i className="bi bi-chevron-compact-right flex"></i>
       </button>
 
-      {
-        paginationBtns.map(btn => (
-          <button
-            key={btn}
-            onClick={() => clickHandler(changePage(btn), "NUMBER")}
-            className={`${currentPage === btn && "bg-primary text-white"}
-                border border-primary rounded flex justify-center items-center rounded w-7 h-7`}
-          >
-            <span className="pt-1 block">{btn}</span>
-          </button>
-        ))
-      }
+      {paginationBtns.map((btn) => (
+        <button
+          key={btn}
+          onClick={() => clickHandler(changePage(btn), "NUMBER")}
+          className={`${currentPage === btn && "bg-primary text-white"}
+              border border-primary rounded flex justify-center items-center rounded w-7 h-7`}
+        >
+          <span className="pt-1 block">{btn}</span>
+        </button>
+      ))}
 
       <button
         onClick={() => clickHandler(nextPage(), "NEXT")}

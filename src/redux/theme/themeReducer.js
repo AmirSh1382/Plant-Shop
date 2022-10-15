@@ -16,7 +16,7 @@ const themeReducer = (state = initialState, action) => {
       };
 
     case "CHANGE_THEME":
-      setNewThemeIntoLocalStorage(payload)
+      setNewThemeIntoLocalStorage(payload);
       return {
         ...state,
         darkMode: payload,

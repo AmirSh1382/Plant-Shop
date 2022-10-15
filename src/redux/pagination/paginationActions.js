@@ -1,4 +1,4 @@
-const paginateProducts = (products) => {
+const paginateProducts = products => {
   return { type: "PAGINATE_PRODUCTS", payload: products };
 };
 

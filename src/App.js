@@ -13,12 +13,12 @@ import NotFound from "./components/not-found/NotFound";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // Redux
-import store from "./redux/store";
 import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const App = () => {
   return (
-    <div className="bg-white dark:bg-black dark:text-white ">
+    <div className="bg-white dark:bg-black dark:text-white">
       <Provider store={store}>
         <Layout>
           <Routes>

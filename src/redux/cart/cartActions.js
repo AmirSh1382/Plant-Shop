@@ -2,7 +2,7 @@ const getLocalCartInfo = () => {
   return { type: "GET_LOCAL_CART_INFO" };
 };
 
-const addProduct = (productInfo) => {
+const addProduct = productInfo => {
   return { type: "ADD_PRODUCT", payload: productInfo };
 };
 

@@ -35,16 +35,14 @@ const ProductDetail = () => {
   return (
     <div className="flex flex-col max-w-6xl w-full mt-20 px-5 mx-auto">
       {/* Arrow back btn */}
-      <div className="text-end mt-4 px-3 text-xl">
+      <div className="text-end text-xl mt-4 px-3">
         <i
           onClick={() => navigate(-1)}
           className="bi bi-arrow-left cursor-pointer"
         ></i>
       </div>
 
-      <div className="text-primary font-semibold text-2xl mt-2">
-        {name}
-      </div>
+      <div className="text-primary font-semibold text-2xl mt-2">{name}</div>
 
       <div
         dangerouslySetInnerHTML={{ __html: description.html }}

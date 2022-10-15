@@ -8,18 +8,18 @@ import { clearCartAction } from "../../redux/cart/cartActions";
 import { useNavigate } from "react-router-dom";
 
 // tick icon
-import purchaseSuccessIcon from "../../asset/Purchase_Success.png"
+import purchaseSuccessIcon from "../../asset/Purchase_Success.png";
 
 const CheckOut = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const clickHandler = () => {
-    navigate("/store")
+    navigate("/store");
 
-    dispatch(clearCartAction())
-  }
+    dispatch(clearCartAction());
+  };
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center max-w-6xl w-full gap-y-2 mt-20 px-5 mx-auto">
@@ -27,10 +27,10 @@ const CheckOut = () => {
         خرید شما با موفقیت انجام شد :)
       </div>
 
-      <img 
+      <img
         src={purchaseSuccessIcon}
-        alt="successfull purchase" 
-        className="w-full max-w-[500px] px-5" 
+        alt="successfull purchase"
+        className="w-full max-w-[500px] px-5"
       />
 
       <button

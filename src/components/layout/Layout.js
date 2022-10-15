@@ -5,37 +5,38 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 // Redux
-import { useDispatch ,useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
+import { getLocalTheme } from "../../redux/theme/themeActions";
 
 // React toastify
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Functions
-import { getUserDataFromCookie } from "../../helper/functions";
+import { getUserDataFromCookie } from "../../helper/validate";
 
 const Layout = ({ children }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const { darkMode } = useSelector(state => state.themeState)
+  const { darkMode } = useSelector(state => state.themeState);
 
   const [ minHeight, setMinHeight ] = useState(visualViewport.height + "px");
 
   useEffect(() => {
-    dispatch({type: "GET_LOCAL_THEME"});
+    dispatch(getLocalTheme());
 
-    document.cookie && dispatch(getUserDataFromCookie())
+    document.cookie && dispatch(getUserDataFromCookie());
 
-    darkMode 
-     ? document.documentElement.classList.add("dark")
-     : document.documentElement.classList.remove("dark")
+    darkMode
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
 
     const calculateMinHeight = () => setMinHeight(visualViewport.height + "px");
 
     window.addEventListener("resize", calculateMinHeight);
 
-    return () => window.removeEventListener("resize", calculateMinHeight)
-  }, [darkMode, dispatch])
+    return () => window.removeEventListener("resize", calculateMinHeight);
+  }, [darkMode, dispatch]);
 
   return (
     <div style={{ minHeight }} className="flex flex-col">

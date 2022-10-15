@@ -19,7 +19,6 @@ const Shop = () => {
   const dispatch = useDispatch();
 
   const paginationState = useSelector(state => state.paginationState);
-
   const { paginatedProducts } = paginationState;
 
   const { loading, error, data } = useQuery(GET_PRODUCTS_INFO);
@@ -43,7 +42,7 @@ const Shop = () => {
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
          grid-flow-row gap-5 m-3 mb-8"
       >
-        {paginatedProducts.map(product => <Product key={product.id} {...product} /> )}
+        {paginatedProducts.map(product => <Product key={product.id} {...product} />)}
       </div>
 
       <div className="mb-10">
