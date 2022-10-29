@@ -1,0 +1,61 @@
+@import "mixins";
+
+$backgroundColor: #f5f5f5;
+
+.label {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    opacity: 0.9;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0px 5px;
+    transform: translateY(-50%);
+    transition: 0.15s all;
+
+    &.active {
+        background-color: $backgroundColor;
+        color: rgb(64,145,119) !important;
+        font-size: 14px;
+        z-index: 100;
+        opacity: 1;
+        top: 0px;
+    }
+
+    &.error {
+        color: red !important;
+    }
+}
+
+.input {
+    direction: ltr;
+    background-color: $backgroundColor;
+    border: 1px solid rgba(0, 0,0, 0.13);
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 17px;
+    width: 100%;
+    transition: 0.15s all;
+
+    
+    &:focus {
+        border-color: rgba(64,145,119,0.7) !important;
+        outline: transparent !important;
+    }
+
+    &.error {
+        border-color: red !important;
+    }
+}
+
+
+@include mediaMinWidth(768px) {
+    .label{
+        font-size: 14px;
+
+        &.active {
+            font-size: 13px;
+        }
+    }
+}

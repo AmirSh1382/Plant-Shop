@@ -13,7 +13,7 @@ const About = () => {
         <div className="flex flex-col gap-y1 pl-3">
             <span>React Js</span>
             <span>Tailwind css</span>
-            <span>Pure css</span>
+            <span>Sass</span>
             <span>Bootstrap Icons</span>
             <span>Redux state manager - React Redux</span>
         </div>

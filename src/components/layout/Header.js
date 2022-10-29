@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 // Styles
-import styles from "../../styles/Header.module.css";
+import styles from "../../styles/modules/Header.module.scss";
 
 // React-router-dom
 import { Link } from "react-router-dom";
@@ -86,7 +86,7 @@ const Header = () => {
       <div className={styles.headerWrapper}>
         <nav
           ref={navRef}
-          className={`${styles.nav} ${isMenuOpen && styles.avtiveMenu} bg-white dark:bg-black`}
+          className={`${styles.nav} ${isMenuOpen && styles.activeMenu} bg-white dark:bg-black`}
         >
           <ul>
             <li onClick={() => setIsMenuOpen(false)}>
@@ -115,7 +115,7 @@ const Header = () => {
         <div
           ref={hamburgerRef}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`${styles.hamburger} ${isMenuOpen && styles.avtiveMenu}`}
+          className={`${styles.hamburger} ${isMenuOpen && styles.activeMenu}`}
         >
           <span className="bg-primary"></span>
           <span className="bg-primary"></span>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Styles
-import styles from "../../styles/Input.module.css"
+import styles from "../../styles/modules/Input.module.scss"
 
 const Input = ({ id, name, label, value, setValue, touch, setTouch, error }) => {
 
